@@ -1221,7 +1221,13 @@
         "name": "Main wash time"
       },
       "notification_volumen_setting_status": {
-        "name": "Notification volume"
+        "name": "Notification volume",
+        "state": {
+          "mute": "Mute",
+          "low": "Low",
+          "mid": "Mid",
+          "high": "High"
+        }
       },
       "order_time_minimum_hour": {
         "name": "Order time minimum hour"
@@ -1330,6 +1336,18 @@
         "state": {
           "auto": "Auto",
           "eco": "Eco",
+          "universal": "Universal",
+          "quick_program": "Quick program",
+          "quick_pro": "Quick Pro",
+          "preheated": "Preheated",
+          "crystal_glass": "Crystal Glass",
+          "time_program": "Time Program",
+          "plastic": "Plastic",
+          "rinse_and_hold": "Rinse and Hold",
+          "Self_cleaning": "Self Cleaning",
+          "lower_half": "Lower Half",
+          "upper_half": "Upper Half",
+          "odour": "Odour",
           "one_hour": "1 hour",
           "intensive": "Intensive",
           "glass": "Glass",
@@ -1356,7 +1374,11 @@
         "name": "Selected program mode",
         "state": {
           "normal": "Normal",
-          "fast": "Fast"
+          "fast": "Fast",
+          "green": "Green",
+          "speed": "Speed",
+          "night": "Night",
+          "intensive": "Intensive"
         }
       },
       "selected_program_remaining_time_in_minutes": {
