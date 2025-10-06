@@ -595,21 +595,21 @@ properties:
     select:
       device_class: enum
       options:
-        0: Eco
-        1: Auto
-        2: Universal
-        3: Intensivve
-        4: Quick pro
-        5: Preheated
-        6: Crystal glass
-        7: Time program
-        8: Hygiene
-        9: Plastic
-        10: Rinse and hold
-        11: Self cleaning
-        12: Lower half
-        13: Upper half
-        14: Anti-odour
+        0: eco
+        1: auto
+        2: universal
+        3: intensivve
+        4: quick_pro
+        5: preheated
+        6: crystal_glass
+        7: time_program
+        8: hygiene
+        9: plastic
+        10: rinse_and_hold
+        11: Self_cleaning
+        12: lower_half
+        13: upper_half
+        14: anti-odour
       command:
         name: Selected_program_id
     icon: mdi:clipboard-list
@@ -618,11 +618,11 @@ properties:
     select:
       device_class: enum
       options:
-        2: Normal
-        3: Green
-        4: Speed
-        5: Night
-        6: Intensive
+        2: normal
+        3: green
+        4: speed
+        5: night
+        6: intensive
       command:
         name: Program_mode
         adjust: 1
@@ -634,26 +634,24 @@ properties:
       options:
         1: off
         2: on
-
   - property: Feedback_volumen_setting_status
     select:
       device_class: enum
       options:
-        1: Mute
-        2: Low
-        3: Mid
-        4: High
-      command:
-        name: Feedback_volumen_setting
-    icon: mdi:volume-source
+        1: mute
+        2: low
+        3: mid
+        4: high
+    icon: mdi:volume-low
+    hide: true
   - property: Notification_volumen_setting_status
     select:
       device_class: enum
       options:
-        1: Mute
-        2: Low
-        3: Mid
-        4: High
+        1: mute
+        2: low
+        3: mid
+        4: high
       command:
         name: Notification_volumen_setting
     icon: mdi:volume-source
