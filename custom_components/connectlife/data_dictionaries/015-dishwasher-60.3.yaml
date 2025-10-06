@@ -655,15 +655,6 @@ properties:
       command:
         name: Notification_volumen_setting
     icon: mdi:volume-source
-
-  # Auto dose control
-    unavailable: 0
-    switch:
-      "off": 1
-      "on": 2
-      command:
-        name: Auto_dose
-
   - property: Selected_program_auto_door_open_function
     unavailable: 0
     switch:
