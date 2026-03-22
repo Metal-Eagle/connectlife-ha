@@ -16,7 +16,7 @@ properties:
         "off": 1
         "on": 2
         command:
-          name: MDO_on_demand
+          name: door
           adjust: 1
       icon: mdi:door-open
       command:
