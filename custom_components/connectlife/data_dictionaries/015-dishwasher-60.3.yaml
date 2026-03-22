@@ -11,7 +11,14 @@ properties:
     unavailable: 0
     switch:
       "off": 1
-      "on": 2
+      unavailable: 0
+      switch:
+        "off": 1
+        "on": 2
+        command:
+          name: MDO_on_demand
+          adjust: 1
+      icon: mdi:door-open
       command:
         name: Auto_dose_setting
         adjust: 1
@@ -411,7 +418,14 @@ properties:
     sensor:
       unknown_value: 255
   - property: MDO_on_demand
-    hide: true
+    unavailable: 0
+    switch:
+      "off": 1
+      "on": 2
+      command:
+        name: MDO_on_demand
+        adjust: 1
+    icon: mdi:door-open
   - property: MDO_on_demand_allowed
     hide: true
   - property: Odor_control_setting
@@ -655,11 +669,3 @@ properties:
       command:
         name: Notification_volumen_setting
     icon: mdi:volume-source
-  - property: Selected_program_auto_door_open_function
-    unavailable: 0
-    switch:
-      "off": 1
-      "on": 2
-      command:
-        name: Selected_program_mode
-        # adjust: 1
