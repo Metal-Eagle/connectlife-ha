@@ -420,7 +420,7 @@ properties:
       "off": 1
       "on": 2
       command:
-        name: Oder_control_setting
+        name: Odor_control_setting
         adjust: 1
   - property: Pressure_calibration_setting_status
     sensor:
@@ -606,7 +606,7 @@ properties:
         8: hygiene
         9: plastic
         10: rinse_and_hold
-        11: Self_cleaning
+        11: self_cleaning
         12: lower_half
         13: upper_half
         14: anti-odour

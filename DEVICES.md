@@ -20,7 +20,7 @@
 | Gorenje GS673B60W | Dishwasher               | 015              | dishwasher-50.2f     |
 |                   | Dishwasher               | 015              | dishwasher-50.2t     |
 | W-DW50/60-22      | Dishwasher               | 015              | dishwasher-60.2      |
-|                   | Dishwasher               | 015              | dishwasher-60.3      |
+|GVWC391XL          | Dishwasher               | 015              | dishwasher-60.3      |
 |                   | Heat pump                | 016              | 502                  |
 |                   | Induction hob            | 020              | 63c45b513e1a4bf7     |
 |                   | Oven                     | 023              | 295608422d362be1     |
