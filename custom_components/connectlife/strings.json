@@ -862,6 +862,9 @@
       "water_level_switch": {
         "name": "Water level switch"
       },
+      "mdo_on_demand_allowed": {
+        "name": "MDO on demand allowed"
+      },
       "waterbox_full": {
         "name": "Waterbox full"
       }
@@ -1885,6 +1888,19 @@
       "zone_number": {
         "name": "Number of zones"
       }
+      ,
+      "fota_status": {
+        "name": "FOTA status"
+      },
+      "energy_save_setting_status": {
+        "name": "Energy save setting"
+      },
+      "high_temperature_status": {
+        "name": "High temperature status"
+      },
+      "water_tank": {
+        "name": "Water tank"
+      }
     },
     "switch": {
       "anticrease": {
@@ -1928,6 +1944,9 @@
       },
       "odor_control_setting": {
         "name": "Odor control"
+      },
+      "mdo_on_demand": {
+        "name": "MDO on demand"
       },
       "prewash": {
         "name": "Prewash"
