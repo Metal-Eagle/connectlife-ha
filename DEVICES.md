@@ -7,6 +7,7 @@
 |                      | Dehumidifier             | 007              | 406                    |
 |                      | Air conditioner          | 008              | 301                    |
 |                      | Air conditioner          | 008              | 304                    |
+| AWUS1225TW           | Air conditioner          | 008              | 399                    |
 |                      | Air conditioner          | 009              | 100                    |
 |                      | Air conditioner          | 009              | 104                    |
 | AS-09TW2RLDTT00      | Air conditioner          | 009              | 105                    |
@@ -28,22 +29,33 @@
 |                      | Induction hob            | 020              | 63c45b513e1a4bf7       |
 |                      | Oven                     | 023              | 295608422d362be1       |
 |                      | Washing machine          | 025              | 1wj090660v0w           |
+| WF5S9045BW           | Washing machine          | 025              | 1wj090728v0w           |
 | WD3S9043BB3          | Washing machine          | 025              | 1wj090913v0f           |
 | WFQR1014             | Washing machine          | 025              | 1wj100649v0t           |
 | WF3S1043BW3          | Washing machine          | 025              | 1wj100722v0w           |
 | HWFS1015AB           | Washing machine          | 025              | 1wj100923v0f           |
+|                      | Washing machine          | 025              | 1wj105050v0w           |
 | WFSE1114-LVW002      | Washing machine          | 025              | 1wj105219v0w           |
 | WF3S1114-LVW004      | Washing machine          | 025              | 1wj105246v0w           |
+|                      | Washing machine          | 025              | 1wj105418v0t           |
 | WD5I1045BWQ          | Washing machine          | 025              | 1wj105552v0w           |
 | WDSE1214-EVAJMW      | Washing machine          | 025              | 1wj120261v0w           |
 | WFSE1214-MVW002      | Washing machine          | 025              | 1wj120389v0b           |
 |                      | Washing machine          | 025              | 1wj120407v0w           |
+|                      | Washing machine          | 025              | 1wj120514v0t           |
 | WF5i1214-RVW002      | Washing machine          | 025              | 1wj120560v0w           |
+|                      | Refrigerator             | 026              | 1b0330z0079j           |
+| HRCD483TBW           | Refrigerator             | 026              | 1b0470z0012j           |
+| RQ5P470SEIE          | Refrigerator             | 026              | 1b0470z0026j           |
+| RF793N4SAFE          | Refrigerator             | 026              | 1b0610z0043j           |
 |                      | Refrigerator             | 026              | 1b0610z0049j           |
 |                      | Refrigerator             | 026              | 1b0628z0075j           |
 | RS818N4TIE1          | Refrigerator             | 026              | 1b0628z0146j           |
+| WPAM14A2T            | Washing machine          | 027              | washing-machine-wm22-b2plus |
 | WPNA84A2TSWIFI       | Washing machine          | 027              | washing-machine-wm22   |
+| DH3S80-DVW006        | Tumble dryer             | 030              | 1wk080140v0w           |
 | DH3S802BW3           | Tumble dryer             | 030              | 1wk080066v0w           |
 | DH5S102BW            | Tumble dryer             | 030              | 1wk100028v0w           |
 | DHSE10               | Tumble dryer             | 030              | 1wk100130v0f           |
+| DHSE80-BEW001        | Tumble dryer             | 030              | 1wk080027e0w           |
 | DPNA83W              | Tumble dryer             | 032              | 000                    |

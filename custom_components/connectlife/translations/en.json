@@ -39,6 +39,24 @@
           }
         }
       }
+    },
+    "unsupported_beep": {
+      "title": "Disable beep not supported by {device_name}",
+      "fix_flow": {
+        "abort": {
+          "issue_ignored": "Ignored \"Disable beep not supported by {device_name}\"."
+        },
+        "step": {
+          "init": {
+            "title": "Disable beep not supported by {device_name}",
+            "description": "The device \"{device_name}\" does not support the disable beep option.",
+            "menu_options": {
+              "confirm": "Update configuration",
+              "ignore": "Ignore"
+            }
+          }
+        }
+      }
     }
   },
   "options": {
@@ -445,6 +463,9 @@
       "alarmtanklevel1": {
         "name": "Alarmtanklevel1"
       },
+      "ali_wifi_fault_flag": {
+        "name": "WiFi fault"
+      },
       "auto_dose_refill": {
         "name": "Auto dose refill"
       },
@@ -472,6 +493,9 @@
       "child_lock_status": {
         "name": "Child lock"
       },
+      "child_lock_status_status": {
+        "name": "Child lock"
+      },
       "child_lock_switch_exist": {
         "name": "Child lock switch exist"
       },
@@ -480,6 +504,12 @@
       },
       "clean_filter": {
         "name": "Clean filter"
+      },
+      "condensation_fan_failure_status": {
+        "name": "Condensation fan failure status"
+      },
+      "control_failure_status": {
+        "name": "Control failure status"
       },
       "crisp_function_status": {
         "name": "Crisp function status"
@@ -498,6 +528,9 @@
       },
       "detergent_display": {
         "name": "Detergent display"
+      },
+      "detergent_state": {
+        "name": "Detergent state"
       },
       "door": {
         "name": "Door"
@@ -658,8 +691,14 @@
       "extra_rinse": {
         "name": "Extra rinse"
       },
+      "extra_rinse_status": {
+        "name": "Extra rinse"
+      },
       "f_e_arkgrille": {
         "name": "Cabinet grille protection alarm"
+      },
+      "f_e_dwmachine": {
+        "name": "Lower machine failure"
       },
       "f_e_filterclean": {
         "name": "Filter clean"
@@ -709,6 +748,12 @@
       "f_e_outtemp": {
         "name": "Outdoor ambient temperature sensor failure"
       },
+      "f_e_over_cold": {
+        "name": "Over cold protection"
+      },
+      "f_e_over_hot": {
+        "name": "Over heat protection"
+      },
       "f_e_pump": {
         "name": "Pump"
       },
@@ -720,6 +765,9 @@
       },
       "f_e_tubetemp": {
         "name": "Tube temperature"
+      },
+      "f_e_upmachine": {
+        "name": "Upper machine failure"
       },
       "f_e_waterfull": {
         "name": "Water full"
@@ -756,6 +804,9 @@
       },
       "freeze_poweron_ad": {
         "name": "Freeze poweron ad"
+      },
+      "frize_temp_2_degree_above_starting_point": {
+        "name": "Freezer temperature 2\u00b0 above start"
       },
       "frost_state": {
         "name": "Frost state"
@@ -802,8 +853,14 @@
       "humidity_sensor_failure": {
         "name": "Humidity sensor failure"
       },
+      "ice_make_room_alarm": {
+        "name": "Ice maker room alarm"
+      },
       "ice_making_machine_failure": {
         "name": "Ice making machine failure"
+      },
+      "ice_making_normal_status": {
+        "name": "Ice making normal status"
       },
       "ice_making_state": {
         "name": "Ice making state"
@@ -825,6 +882,9 @@
       },
       "light": {
         "name": "Light"
+      },
+      "lock_fresh_mode": {
+        "name": "Lock fresh mode"
       },
       "low_wine_area_c_evaporator_fault": {
         "name": "Low wine area c evaporator fault"
@@ -870,6 +930,9 @@
       },
       "reed_switch": {
         "name": "Reed switch"
+      },
+      "refi_temp_2_degree_above_starting_point": {
+        "name": "Refrigerator temperature 2\u00b0 above start"
       },
       "refr_defrosting_failure": {
         "name": "Refrigerator defrosting failure"
@@ -955,11 +1018,26 @@
       "selected_program_auto_door_open_function": {
         "name": "Selected program auto door open"
       },
+      "selected_program_disinfection": {
+        "name": "Disinfection"
+      },
+      "selected_program_entry_steam_status": {
+        "name": "Entry steam"
+      },
       "selected_program_extradry_status": {
         "name": "Extra dry"
       },
+      "selected_program_prewash_status": {
+        "name": "Prewash"
+      },
+      "selected_program_rinse_hold_status": {
+        "name": "Rinse hold"
+      },
       "selected_program_steamfinish": {
         "name": "Steam finish"
+      },
+      "selected_program_water_pluse_status": {
+        "name": "Water pulse"
       },
       "session_pairing_active": {
         "name": "Session pairing active"
@@ -1117,6 +1195,9 @@
       "soft_pairing_setting": {
         "name": "Soft pairing setting"
       },
+      "softener_state": {
+        "name": "Softener state"
+      },
       "softer_display": {
         "name": "Softener display"
       },
@@ -1174,6 +1255,12 @@
       "step_pre_bake_status": {
         "name": "Step pre bake status"
       },
+      "stopaddgo_status": {
+        "name": "Stop & Go"
+      },
+      "stopaddgoallowed": {
+        "name": "Stop & Go allowed"
+      },
       "t_beep": {
         "name": "Beep"
       },
@@ -1183,14 +1270,41 @@
       "tx_failure": {
         "name": "TX failure"
       },
+      "up_wine_area_a_evaporator_fault": {
+        "name": "Upper wine area A evaporator fault"
+      },
+      "up_wine_area_a_fan_fault": {
+        "name": "Upper wine area A fan fault"
+      },
+      "up_wine_area_a_humdy_fault": {
+        "name": "Upper wine area A humidity fault"
+      },
+      "up_wine_area_a_temp_fault": {
+        "name": "Upper wine area A temperature fault"
+      },
       "vacuum_on_off_status": {
         "name": "Vacuum on off status"
+      },
+      "var_room_over_temp_alarm": {
+        "name": "Variable room over temperature alarm"
       },
       "vari_evap_temp_sens_head_failure": {
         "name": "Vari evap temp sens head failure"
       },
+      "vari_room_open": {
+        "name": "Variable room open"
+      },
+      "vari_temp_2_degree_above_starting_point": {
+        "name": "Variable temperature 2\u00b0 above start"
+      },
       "vari_temp_sens_head_failure": {
         "name": "Vari temp sens head failure"
+      },
+      "variable_fan_failure_status": {
+        "name": "Variable fan failure"
+      },
+      "variable_heater_failure_status": {
+        "name": "Variable heater failure"
       },
       "vibration_alarm": {
         "name": "Vibration alarm"
@@ -1206,6 +1320,9 @@
       },
       "waterbox_full": {
         "name": "Waterbox full"
+      },
+      "wine_sensor_failure_flag": {
+        "name": "Wine sensor failure"
       }
     },
     "climate": {
@@ -1407,6 +1524,9 @@
           "on": "On"
         }
       },
+      "delaystart_delayend_remaining_time_in_minutes": {
+        "name": "Delay start/end remaining time"
+      },
       "delaystart_delayend_remaining_timein_minutes": {
         "name": "Delay start remaining time"
       },
@@ -1488,8 +1608,8 @@
           "not_available": "Not available",
           "open": "Open",
           "closed": "Closed",
-          "closed_when_running": "Closed when running",
-          "other": "Other"
+          "other": "Other",
+          "locked": "Locked"
         }
       },
       "dryopen_defaultspinspeed": {
@@ -1500,6 +1620,9 @@
       },
       "electricit_consumption_int": {
         "name": "Electricit consumption int"
+      },
+      "energy": {
+        "name": "Energy"
       },
       "energy_consumption_in_running_program": {
         "name": "Energy consumption in running program"
@@ -1557,6 +1680,9 @@
       "f_cool_qvalue": {
         "name": "Cooling"
       },
+      "f_electricity": {
+        "name": "Electricity"
+      },
       "f_heat_qvalue": {
         "name": "Heating"
       },
@@ -1578,6 +1704,9 @@
           "high": "High"
         }
       },
+      "filter_state": {
+        "name": "Filter state"
+      },
       "flexiblespintime_flag": {
         "name": "Flexible spin time flag"
       },
@@ -1591,6 +1720,9 @@
           "confirm_fota": "Confirm fota"
         }
       },
+      "freeze_door_open_time": {
+        "name": "Freeze door open time"
+      },
       "freeze_max_temperature": {
         "name": "Freeze max temperature"
       },
@@ -1602,6 +1734,9 @@
       },
       "freeze_sensor_real_temperature": {
         "name": "Freezer sensor real temperature"
+      },
+      "freeze_temperature": {
+        "name": "Freeze temperature"
       },
       "fruit_vegetables_temperature": {
         "name": "Fruit vegetables temperature"
@@ -1704,6 +1839,9 @@
       "mainwashtimeuseindex": {
         "name": "Main wash time use index"
       },
+      "measured_grid_voltage": {
+        "name": "Measured grid voltage"
+      },
       "measured_vibrations": {
         "name": "Measured vibrations"
       },
@@ -1794,6 +1932,9 @@
       "real_humidity_c": {
         "name": "Real humidity c"
       },
+      "refrigerator_door_open_time": {
+        "name": "Refrigerator door open time"
+      },
       "refrigerator_max_temperature": {
         "name": "Refrigerator max temperature"
       },
@@ -1805,6 +1946,9 @@
       },
       "refrigerator_sensor_real_temperature": {
         "name": "Refrigerator sensor real temperature"
+      },
+      "refrigerator_temperature": {
+        "name": "Refrigerator temperature"
       },
       "remaining_time_of_selected_program": {
         "name": "Remaining time of selected program"
@@ -1959,7 +2103,14 @@
           "fast89": "Fast89",
           "extra_hygiene": "Extra hygiene",
           "remote": "Remote",
-          "none": "None"
+          "none": "None",
+          "auto": "Auto",
+          "anti_allergy": "Anti allergy",
+          "refresh": "Refresh",
+          "towels": "Towels",
+          "cotton": "Cotton",
+          "fast30": "Fast30",
+          "down": "Down"
         }
       },
       "selected_program_id_status": {
@@ -1998,7 +2149,11 @@
           "shirts": "Shirts",
           "drum_cleaning": "Drum Cleaning",
           "spinning_draining": "Spinning & Draining",
-          "rinsing_softening": "Rinsing & Softening"
+          "rinsing_softening": "Rinsing & Softening",
+          "no_program_selected": "No program selected",
+          "pet_hair_removal": "Pet hair removal",
+          "draining": "Draining",
+          "down_feathers": "Down feathers"
         }
       },
       "selected_program_mode": {
@@ -2012,14 +2167,47 @@
           "intensive": "Intensive"
         }
       },
+      "selected_program_mode_status": {
+        "name": "Program mode",
+        "state": {
+          "not_available": "Not available",
+          "normal": "Normal",
+          "fast": "Fast",
+          "extra_fast": "Extra fast"
+        }
+      },
       "selected_program_remaining_time_in_minutes": {
         "name": "Remaining time of selected program"
+      },
+      "selected_program_set_temperature_status": {
+        "name": "Temperature",
+        "state": {
+          "not_available": "Not available",
+          "cold": "Cold",
+          "20_c": "20 \u00b0C",
+          "30_c": "30 \u00b0C",
+          "40_c": "40 \u00b0C",
+          "60_c": "60 \u00b0C"
+        }
       },
       "selected_program_total_running_time_in_minutes": {
         "name": "Selected program total running time"
       },
       "selected_program_total_time_in_minutes": {
         "name": "Selected program total time"
+      },
+      "selected_program_washing_spin_speed_rpm_status": {
+        "name": "Spin speed",
+        "state": {
+          "not_available": "Not available",
+          "no_spin": "No spin",
+          "0_rpm": "0",
+          "800_rpm": "800",
+          "400_rpm": "400",
+          "1000_rpm": "1000",
+          "1200_rpm": "1200",
+          "1400_rpm": "1400"
+        }
       },
       "selected_programduration_inminutes": {
         "name": "Duration of selected program"
@@ -3176,6 +3364,13 @@
       "temperature_room_judge": {
         "name": "Temperature room judge"
       },
+      "temperature_unit": {
+        "name": "Temperature unit",
+        "state": {
+          "celsius": "Celsius",
+          "fahrenheit": "Fahrenheit"
+        }
+      },
       "time_format": {
         "name": "Time format",
         "state": {
@@ -3218,6 +3413,9 @@
       },
       "utc_datetime_bdc_delaystart_delayend_timestamp": {
         "name": "BDC DelayStart DelayEnd"
+      },
+      "variation_door_open_time": {
+        "name": "Variation door open time"
       },
       "variation_max_temperature": {
         "name": "Variation max temperature"
@@ -3267,7 +3465,10 @@
         "name": "Water hardness"
       },
       "water_hardness_setting_status": {
-        "name": "Water hardness"
+        "name": "Water hardness",
+        "state": {
+          "not_set": "Not set"
+        }
       },
       "water_inlet_setting_status": {
         "name": "Water inlet"
@@ -3328,6 +3529,9 @@
       },
       "drum_light": {
         "name": "Drum light"
+      },
+      "extra_rinse": {
+        "name": "Extra rinse"
       },
       "fota_cmd": {
         "name": "Firmware update"
@@ -3401,6 +3605,9 @@
       "t_beep": {
         "name": "Beep"
       },
+      "t_dimmer": {
+        "name": "Dimmer"
+      },
       "t_eco": {
         "name": "Eco"
       },
@@ -3427,6 +3634,9 @@
       },
       "tab_setting_status": {
         "name": "Tab setting status"
+      },
+      "time_save": {
+        "name": "Time save"
       },
       "welcome": {
         "name": "Welcome"
@@ -3500,6 +3710,15 @@
           "24_hours": "24 hours"
         }
       },
+      "detergent": {
+        "name": "Detergent",
+        "state": {
+          "auto": "Auto",
+          "less": "Less",
+          "standard": "Standard",
+          "more": "More"
+        }
+      },
       "dry_level": {
         "name": "Drying level",
         "state": {
@@ -3521,7 +3740,11 @@
           "180_min": "180 min",
           "240_min": "240 min",
           "iron": "Iron",
-          "cupboard": "Cupboard"
+          "cupboard": "Cupboard",
+          "none": "None",
+          "5_min": "5 min",
+          "10_min": "10 min",
+          "15_min": "15 min"
         }
       },
       "drymodel": {
@@ -3614,7 +3837,21 @@
           "bedding": "Bedding",
           "power_30": "Power 30",
           "pets": "Pets",
-          "full_load_49": "Full load 49"
+          "full_load_49": "Full load 49",
+          "mix": "Mix",
+          "jeans": "Jeans",
+          "sportswear": "Sportswear",
+          "hand_wash": "Hand wash",
+          "eco": "Eco"
+        }
+      },
+      "softener": {
+        "name": "Softener",
+        "state": {
+          "auto": "Auto",
+          "less": "Less",
+          "standard": "Standard",
+          "more": "More"
         }
       },
       "spin_speed_rpm": {
@@ -3814,6 +4051,13 @@
           "cold": "Cold"
         }
       },
+      "temperature_unit": {
+        "name": "Temperature unit",
+        "state": {
+          "celsius": "Celsius",
+          "fahrenheit": "Fahrenheit"
+        }
+      },
       "time_format": {
         "name": "Time format",
         "state": {
@@ -3844,6 +4088,9 @@
       }
     },
     "number": {
+      "delayendtime_hour": {
+        "name": "Delayendtime hour"
+      },
       "freeze_max_temperature": {
         "name": "Freezeer max temperature"
       },
