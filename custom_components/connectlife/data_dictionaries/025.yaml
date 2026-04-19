@@ -20,6 +20,7 @@ properties:
         1: standby
         2: running
         3: paused
+        4: alarm
   - property: Detergent_display
     icon: mdi:spray
     binary_sensor:
@@ -77,26 +78,17 @@ properties:
       unit: kWh
       read_only: true
       state_class: total
-  - property: Electricit_consumption_int
+  - property: Electricit_consumption
     icon: mdi:lightning-bolt
     sensor:
       device_class: energy
       unit: kWh
       read_only: true
       state_class: total_increasing
-  - property: Electricit_consumption_decimal
-    icon: mdi:lightning-bolt
-    sensor:
-      device_class: energy
-      unit: kWh
-      read_only: true
-  - property: Water_consumption_int
-    icon: mdi:water
-    sensor:
-      device_class: water
-      unit: L
-      read_only: true
-      state_class: total_increasing
+    combine:
+      - property: Electricit_consumption_int
+      - property: Electricit_consumption_decimal
+        multiplier: 0.01
   - property: Water_consumption
     icon: mdi:water
     sensor:
@@ -104,6 +96,10 @@ properties:
       unit: L
       read_only: true
       state_class: total_increasing
+    combine:
+      - property: Water_consumption_int
+      - property: Water_consumption_decimal
+        multiplier: 0.01
   - property: Daily_energy_consumption
     icon: mdi:lightning-bolt
     sensor:
@@ -591,23 +587,37 @@ properties:
     hide: true
     entity_category: diagnostic
   - property: Spintime_Index
-    hide: true
+    icon: mdi:timer-sand
     entity_category: diagnostic
+    sensor:
+      device_class: duration
+      unit: min
+      read_only: true
   - property: Stain_removal
     hide: true
     entity_category: diagnostic
-  - property: StandardElectricitConsumption_int
+  - property: StandardElectricitConsumption
     hide: true
     entity_category: diagnostic
-  - property: StandardElectricitconsumption_decimal
+    sensor:
+      device_class: energy
+      unit: kWh
+      read_only: true
+    combine:
+      - property: StandardElectricitConsumption_int
+      - property: StandardElectricitconsumption_decimal
+        multiplier: 0.01
+  - property: StandardWaterConsumption
     hide: true
     entity_category: diagnostic
-  - property: StandardWaterConsumption_decimal
-    hide: true
-    entity_category: diagnostic
-  - property: StandardWaterConsumption_int
-    hide: true
-    entity_category: diagnostic
+    sensor:
+      device_class: water
+      unit: L
+      read_only: true
+    combine:
+      - property: StandardWaterConsumption_int
+      - property: StandardWaterConsumption_decimal
+        multiplier: 0.01
   - property: Temp_Index
     hide: true
     entity_category: diagnostic
@@ -788,9 +798,6 @@ properties:
   - property: WaterLevelIndex
     hide: true
     entity_category: diagnostic
-  - property: Water_consumption_decimal
-    hide: true
-    entity_category: diagnostic
   - property: Water_hardness_setting
     hide: true
     entity_category: diagnostic
@@ -816,8 +823,14 @@ properties:
     hide: true
     entity_category: diagnostic
   - property: error_code
-    hide: true
+    icon: mdi:alert-circle-outline
     entity_category: diagnostic
+    sensor:
+      device_class: enum
+      read_only: true
+      options:
+        0: none
+        100: unbalance_alarm
   - property: hottime
     hide: true
     entity_category: diagnostic
@@ -873,8 +886,12 @@ properties:
     hide: true
     entity_category: diagnostic
   - property: washing_program_kg
-    hide: true
+    icon: mdi:weight-kilogram
     entity_category: diagnostic
+    sensor:
+      device_class: weight
+      unit: kg
+      read_only: true
   - property: washingtime
     hide: true
     entity_category: diagnostic
@@ -1102,8 +1119,15 @@ properties:
     hide: true
     entity_category: diagnostic
   - property: Spin_speed_rpm
-    hide: true
-    entity_category: diagnostic
+    icon: mdi:rotate-3d-variant
+    select:
+      options:
+        0: none
+        6: "600"
+        8: "800"
+        10: "1000"
+        12: "1200"
+        14: "1400"
   - property: dry_time
     hide: true
     entity_category: diagnostic
@@ -1111,5 +1135,12 @@ properties:
     hide: true
     entity_category: diagnostic
   - property: temperature
-    hide: true
-    entity_category: diagnostic
+    icon: mdi:thermometer-lines
+    select:
+      options:
+        0: cold
+        2: "20"
+        3: "30"
+        4: "40"
+        6: "60"
+        9: "90"
