@@ -1385,6 +1385,9 @@
           "standard": "Standard"
         }
       },
+      "display_brightness_setting_status": {
+        "name": "Display brightness setting status"
+      },
       "dry_level": {
         "name": "Drying level",
         "state": {
@@ -1551,24 +1554,34 @@
       "selected_program_id_status": {
         "name": "Program",
         "state": {
+          "anti-odour": "Anti-odour",
           "auto": "Auto",
           "clean": "Clean",
+          "crystal_glass": "Crystal glass",
           "eco": "Eco",
           "glass": "Glass",
           "hygiene": "Hygiene",
           "intensive": "Intensive",
+          "intensivve": "Intensivve",
+          "lower_half": "Lower half",
           "night": "Night",
           "one_hour": "One hour",
+          "plastic": "Plastic",
+          "preheated": "Preheated",
           "quick_pro": "Quick pro",
           "rinse_and_hold": "Rinse and hold",
           "self_cleaning": "Self cleaning",
-          "time_program": "Time program"
+          "time_program": "Time program",
+          "universal": "Universal",
+          "upper_half": "Upper half"
         }
       },
       "selected_program_mode": {
         "name": "Mode",
         "state": {
           "fast": "Fast",
+          "green": "Green",
+          "intensive": "Intensive",
           "night": "Night",
           "normal": "Normal",
           "not_available": "Not available",
@@ -4065,6 +4078,9 @@
       },
       "rgb_normal_mode_r_value": {
         "name": "RGB normal mode R value"
+      },
+      "rinse_aid_setting_status": {
+        "name": "Rinse aid setting status"
       },
       "rinse_flag": {
         "name": "Rinse flag"
@@ -6591,6 +6607,9 @@
       },
       "key_sound": {
         "name": "Key sound"
+      },
+      "mdo_on_demand": {
+        "name": "Mdo on demand"
       },
       "mute": {
         "name": "Mute"
