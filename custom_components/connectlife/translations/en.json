@@ -3242,7 +3242,7 @@
         "name": "Cooling"
       },
       "f_electricity": {
-        "name": "Current"
+        "name": "Electricity"
       },
       "f_heat_qvalue": {
         "name": "Heating"
