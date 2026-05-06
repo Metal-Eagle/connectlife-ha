@@ -2,8 +2,7 @@
 
 Mapping files for known appliances are located in this directory. Appliances without a mapping file will still
 be loaded, but with a warning in the log. Their properties will all be mapped to [sensor](#type-sensor) entities,
-with `hidden` set to `true` and `state_class` set to `measurement` (to enable
-[long-term statistics](https://developers.home-assistant.io/docs/core/entity/sensor/#long-term-statistics)).
+with `hidden` set to `true`.
 
 ## Default mapping files
 
@@ -16,6 +15,71 @@ will just be ignored for feature variants that don't expose that property.
 
 **Note:** The top level `climate` section is not supported in the default mapping files.
 
+### Property inheritance in feature overrides
+
+Any field in a property can be overridden in a feature file; unspecified fields are inherited from the
+base type file. If the override changes the platform type (e.g., from `sensor:` to `select:`), the
+override's platform block replaces the base's.
+
+The following top-level fields always inherit, even across platform changes:
+
+- `icon`
+- `hide`
+- `disable`
+- `entity_category`
+- `unavailable`
+- `combine` — if you change the platform and want to drop the base's combine sources, clear it with
+  `combine: null`.
+
+Collections replace as a whole — there is no per-key merging inside them:
+
+- `options`
+- `combine`
+- `command`
+- dict-valued `min_value` / `max_value`
+
+Set a field to `null` to explicitly unset what the base specified — useful for dropping a `unit:` set
+in the base. To suppress an entity entirely, use `disable: true`.
+
+Example: the base specifies the full mapping, the feature override carries only the difference.
+
+```yaml
+# 009.yaml (base)
+- property: t_temp
+  climate:
+    target: target_temperature
+    min_value: 16
+    max_value: 32
+```
+
+```yaml
+# 009-120.yaml (feature override — caps at 30 °C, inherits target and min_value)
+- property: t_temp
+  climate:
+    max_value: 30
+```
+
+Example: a feature variant returns a property as a direct value where the base combines two sources.
+
+```yaml
+# 025.yaml (base — virtual sensor combining int and decimal source properties)
+- property: StandardElectricitConsumption
+  sensor:
+    device_class: energy
+    unit: kWh
+    state_class: total_increasing
+  combine:
+    - property: StandardElectricitConsumption_int
+    - property: StandardElectricitconsumption_decimal
+      multiplier: 0.01
+```
+
+```yaml
+# 025-{feature}.yaml (override — read the property directly, no combine)
+- property: StandardElectricitConsumption
+  combine: null
+```
+
 ## Create your own mapping file
 
 To map you device, create a file with the name `<deviceTypeCode>-<deviceFeatureCode>.yaml` in this directory. When done,
@@ -27,7 +91,7 @@ The file contains two top level items:
 - `properties`: list of [`Property`](#property)
 
 To make a property visible by default, just add the property to the list. Note that properties you do not map are still
-mapped to [sensor](#type-sensor) entities with `hidden` set to `true` and `state_class` set to `measurement`.
+mapped to [sensor](#type-sensor) entities with `hidden` set to `true`.
 
 Each property is mapped to _one_ entity or _one_ target property. In addition, each `climate` preset is mapped to a
 set of properties and values.
@@ -298,7 +362,7 @@ the `sensor.connectlife` entities, unless the sensor is set to `read_only: true`
 | Item            | Type                                            | Description                                                                                                                                                                                                               |
 |-----------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `read_only`     | `true`, `false`                                 | If this property is known to be read-only (prevents `set_value` service).                                                                                                                                                 |
-| `state_class`   | `measurement`, `total`, `total_increasing`      | Name of any [SensorStateClass enum](https://developers.home-assistant.io/docs/core/entity/sensor/#available-state-classes). For integer properties, defaults to `measurement`. Not allowed when `device_class` is `enum`. |
+| `state_class`   | `measurement`, `total`, `total_increasing`      | Name of any [SensorStateClass enum](https://developers.home-assistant.io/docs/core/entity/sensor/#available-state-classes). Required to enable [long-term statistics](https://developers.home-assistant.io/docs/core/entity/sensor/#long-term-statistics). Only allowed for integer properties; not allowed when `device_class` is `enum`. |
 | `device_class`  | `duration`, `energy`, `water`, etc.             | Name of any [SensorDeviceClass enum](https://developers.home-assistant.io/docs/core/entity/sensor/#available-device-classes).                                                                                             |
 | `unit`          | `min`, `kWh`, `L`, etc., _or_ `property.<name>` | Required if `device_class` is set, except not allowed when `device_class` is `aqi`, `ph` or `enum`.                                                                                                                       |
 | `multiplier`    | number, e.g. `0.1` or `10`                      | Required if the unit in the API is not supported in Home Assistant, e.g. hWh can be multiplied by 0.1 to get kWh.                                                                                                         |
