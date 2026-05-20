@@ -16,7 +16,7 @@ from .coordinator import ConnectLifeCoordinator
 from .dictionaries import Dictionaries, Property
 from .entity import ConnectLifeEntity
 from connectlife.appliance import ConnectLifeAppliance
-from .utils import is_entity
+from .utils import has_platform
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -35,11 +35,7 @@ async def async_setup_entry(
                 coordinator, appliance, s, dictionary.properties[s]
             )
             for s in appliance.status_list
-            if is_entity(
-                Platform.BINARY_SENSOR,
-                dictionary.properties[s],
-                appliance.status_list[s],
-            )
+            if has_platform(Platform.BINARY_SENSOR, dictionary.properties[s])
         )
 
 
@@ -56,17 +52,20 @@ class ConnectLifeBinaryStatusSensor(ConnectLifeEntity, BinarySensorEntity):
         """Initialize the entity."""
         super().__init__(coordinator, appliance, status, Platform.BINARY_SENSOR)
         self.status = status
+        self._unavailable_status = status
+        self._unavailable_value = dd_entry.unavailable
         self.options = dd_entry.binary_sensor.options
         self.entity_description = BinarySensorEntityDescription(
             key=self._attr_unique_id,
             entity_registry_visible_default=not dd_entry.hide,
+            entity_registry_enabled_default=not dd_entry.optional,
             icon=dd_entry.icon,
             name=status.replace("_", " "),
             translation_key=self.to_translation_key(status),
             device_class=dd_entry.binary_sensor.device_class,
             entity_category=dd_entry.entity_category,
         )
-        self.update_state()
+        self._refresh_state()
 
     @callback
     def update_state(self):
@@ -77,4 +76,3 @@ class ConnectLifeBinaryStatusSensor(ConnectLifeEntity, BinarySensorEntity):
             else:
                 self._attr_is_on = None
                 _LOGGER.warning("Unknown value %d for %s", value, self.status)
-        self._attr_available = self.coordinator.data[self.device_id].offline_state == 1

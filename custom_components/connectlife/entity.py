@@ -8,6 +8,7 @@ from connectlife.api import LifeConnectError
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import callback
+from homeassistant.exceptions import ServiceValidationError
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -31,6 +32,8 @@ class ConnectLifeEntity(CoordinatorEntity[ConnectLifeCoordinator]):
     _attr_has_entity_name = True
     _attr_unique_id: str
     _disable_beep = False
+    _unavailable_status: str | None = None
+    _unavailable_value: int | None = None
 
     def __init__(
             self,
@@ -61,53 +64,85 @@ class ConnectLifeEntity(CoordinatorEntity[ConnectLifeCoordinator]):
                 if CONF_DISABLE_BEEP in device:
                     self._disable_beep = device[CONF_DISABLE_BEEP]
 
+    @property
+    def available(self) -> bool:
+        # CoordinatorEntity.available only checks last_update_success, so
+        # _attr_available is ignored. Combine both with the device's
+        # offline_state (1 == online) so unplugged devices show as
+        # unavailable in HA. Also factor in the per-property `unavailable`
+        # sentinel: when the current value matches, the entity is shown as
+        # unavailable rather than being skipped at creation time.
+        return (
+            super().available
+            and self.device_id in self.coordinator.data
+            and self.coordinator.data[self.device_id].offline_state == 1
+            and not self._is_value_unavailable()
+        )
+
+    def _is_value_unavailable(self) -> bool:
+        if self._unavailable_status is None or self._unavailable_value is None:
+            return False
+        if self.device_id not in self.coordinator.data:
+            return False
+        status_list = self.coordinator.data[self.device_id].status_list
+        return status_list.get(self._unavailable_status) == self._unavailable_value
+
     @callback
     @abstractmethod
     def update_state(self):
         """Subclasses implement this to update their state."""
 
     @callback
+    def _refresh_state(self) -> None:
+        """Run subclass update_state() unless the value matches the unavailable sentinel."""
+        if not self._is_value_unavailable():
+            self.update_state()
+
+    @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        self.update_state()
+        self._refresh_state()
         self.async_write_ha_state()
 
     async def async_update_device(self, command: dict[str, int], properties: dict[str, int] | None = None):
         if properties is None:
             properties = command.copy()
-        if self._disable_beep:
-            command["t_beep"] = 0
-            try:
-                await self.coordinator.async_update_device(self.device_id, command, properties)
-            except LifeConnectError as err:
-                _LOGGER.debug(
-                    "Command failed with t_beep for %s (%s), retrying without",
-                    self.nickname,
-                    err,
-                )
-                del command["t_beep"]
+        try:
+            if self._disable_beep:
+                command["t_beep"] = 0
                 try:
                     await self.coordinator.async_update_device(self.device_id, command, properties)
-                except LifeConnectError:
-                    raise err from None
-                self._disable_beep = False
-                ir.async_create_issue(
-                    self.coordinator.hass,
-                    DOMAIN,
-                    f"unsupported_beep.{self.device_id}",
-                    is_fixable=True,
-                    severity=ir.IssueSeverity.WARNING,
-                    translation_key="unsupported_beep",
-                    translation_placeholders={
-                        "device_name": self.nickname or "",
-                    },
-                    data={
-                        "entry_id": self.coordinator.config_entry.entry_id,
-                        "device_id": self.device_id,
-                    },
-                )
-        else:
-            await self.coordinator.async_update_device(self.device_id, command, properties)
+                except LifeConnectError as err:
+                    _LOGGER.debug(
+                        "Command failed with t_beep for %s (%s), retrying without",
+                        self.nickname,
+                        err,
+                    )
+                    del command["t_beep"]
+                    try:
+                        await self.coordinator.async_update_device(self.device_id, command, properties)
+                    except LifeConnectError:
+                        raise err from None
+                    self._disable_beep = False
+                    ir.async_create_issue(
+                        self.coordinator.hass,
+                        DOMAIN,
+                        f"unsupported_beep.{self.device_id}",
+                        is_fixable=True,
+                        severity=ir.IssueSeverity.WARNING,
+                        translation_key="unsupported_beep",
+                        translation_placeholders={
+                            "device_name": self.nickname or "",
+                        },
+                        data={
+                            "entry_id": self.coordinator.config_entry.entry_id,
+                            "device_id": self.device_id,
+                        },
+                    )
+            else:
+                await self.coordinator.async_update_device(self.device_id, command, properties)
+        except LifeConnectError as api_error:
+            raise ServiceValidationError(str(api_error)) from api_error
 
     def to_translation_key(self, property_name: str) -> str:
         return re.sub(r'_+', '_', property_name.strip().lower().replace(" ", "_"))
