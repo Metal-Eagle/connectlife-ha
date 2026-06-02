@@ -20,7 +20,11 @@
       "user": {
         "data": {
           "password": "Password",
+          "trir": "ConnectLife.TRIR (Russia/CIS) \u2014 experimental",
           "username": "Username"
+        },
+        "data_description": {
+          "trir": "Enable only if you sign in with the ConnectLife.TRIR app used in Russia/CIS. Experimental."
         }
       }
     }
@@ -1097,6 +1101,9 @@
       },
       "motorspeednospinavailable": {
         "name": "Motor speed no spin available"
+      },
+      "offline_state": {
+        "name": "Connectivity"
       },
       "open_freeze_door_alarm": {
         "name": "Open freeze door alarm"
@@ -3371,8 +3378,10 @@
           "program_not_selected": "Program not selected",
           "program_selected": "Program selected",
           "rinse": "Rinse",
+          "rinsing": "Rinsing",
           "running": "Running",
           "spin-dry": "Spin-dry",
+          "spinning": "Spinning",
           "ventilating": "Ventilating",
           "wash": "Wash",
           "weigh": "Weigh"
@@ -3455,6 +3464,9 @@
       },
       "daily_energy_kwh": {
         "name": "Daily energy"
+      },
+      "daily_water_consumption": {
+        "name": "Daily water consumption"
       },
       "darhcdq": {
         "name": "Darhcdq"
@@ -4798,12 +4810,6 @@
       "lidopenflag": {
         "name": "Lid open flag"
       },
-      "lightbrightness": {
-        "name": "Light brightness"
-      },
-      "lightcolortemperature": {
-        "name": "Light color temperature"
-      },
       "lights_duration_setting": {
         "name": "Lights duration setting"
       },
@@ -4931,9 +4937,6 @@
         "name": "Motor"
       },
       "motor_level": {
-        "name": "Motor level"
-      },
-      "motorlevel": {
         "name": "Motor level"
       },
       "navigation_sound_setting": {
@@ -5623,20 +5626,34 @@
       "selected_program_id": {
         "name": "Selected program",
         "state": {
+          "anti_allergy": "Anti allergy",
+          "auto": "Auto",
           "baby": "Baby",
           "bed_linen": "Bed linen",
+          "cotton": "Cotton",
+          "cotton_dry": "Cotton dry",
           "cotton_storage": "Cotton storage",
+          "drum_cleaning": "Drum cleaning",
+          "eco_40_60": "Eco 40 60",
           "extra_hygiene": "Extra hygiene",
+          "fast15": "Fast 15",
           "fast89": "Fast89",
           "iron": "Iron",
+          "jeans": "Jeans",
           "mix": "Mix",
           "none": "None",
+          "power49": "Power 49",
+          "refresh": "Refresh",
           "remote": "Remote",
+          "rinse_and_spin": "Rinse and spin",
           "sensitive": "Sensitive",
           "shirts": "Shirts",
+          "silk_and_delicates": "Silk and delicates",
+          "spin": "Spin",
           "sports": "Sports",
           "standard": "Standard",
           "synthetic": "Synthetic",
+          "synthetic_dry": "Synthetic dry",
           "time": "Time",
           "wool": "Wool"
         }
@@ -8846,9 +8863,14 @@
     "step": {
       "configure_device": {
         "data": {
-          "disable_beep": "Disable beep"
+          "disable_beep": "Disable beep",
+          "expose_offline_state": "Expose offline state"
         },
-        "description": "Configure a device."
+        "data_description": {
+          "disable_beep": "Suppress the appliance beep on commands sent from Home Assistant.",
+          "expose_offline_state": "Add a connectivity sensor for this device and keep its other entities available with their last known values while it is offline, instead of marking them unavailable."
+        },
+        "description": "Configure {device_name}."
       },
       "development": {
         "data": {

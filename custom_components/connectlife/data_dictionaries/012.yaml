@@ -1,4 +1,7 @@
 # Hood
+statistics:
+  source: energy_consumption_curve
+  daily_energy_kwh: true
 properties:
   # Top-level operating state
   - property: DeviceStatus
@@ -15,8 +18,14 @@ properties:
         5: reserved
   - property: MotorLevel
     icon: mdi:fan
-    sensor:
-      read_only: true
+    select:
+      options:
+        0: "0"
+        1: "1"
+        2: "2"
+        3: "3"
+        4: "4"
+        5: "5"
   - property: LightStatus
     icon: mdi:lightbulb
     unavailable: 0
@@ -28,13 +37,11 @@ properties:
         adjust: 1
   - property: LightBrightness
     icon: mdi:lightbulb-on
-    sensor:
-      read_only: true
+    number:
       unit: "%"
   - property: LightColorTemperature
     icon: mdi:thermometer
-    sensor:
-      read_only: true
+    number:
       unit: "%"
   - property: CirculationModeStatus
     icon: mdi:weather-windy

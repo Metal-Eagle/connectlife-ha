@@ -65,6 +65,7 @@
 | HI21472SV                | Induction hob            | 010              | hob-pind                    |
 |                          | Hood                     | 012              | 000                         |
 |                          | Hood                     | 012              | hood-aa-lightfeedback       |
+|                          | Hood                     | 012              | hood-aa-tactile             |
 |                          | Oven                     | 013              | 000                         |
 | Bio21                    | Oven                     | 013              | oven-bio21-iconledplus      |
 | W-DW50/60-22             | Dishwasher               | 015              | 000                         |
@@ -79,6 +80,7 @@
 | WD3S8043BW3              | Washing machine          | 025              | 1wj080837v0w                |
 |                          | Washing machine          | 025              | 1wj090660v0w                |
 | WF5S9045BW               | Washing machine          | 025              | 1wj090728v0w                |
+| WFSE9014-LVW002          | Washing machine          | 025              | 1wj090729v0w                |
 | WD3S9043BB3              | Washing machine          | 025              | 1wj090913v0f                |
 | WF3S1014-SVW002          | Washing machine          | 025              | 1wj100404v0w                |
 | WFQR1014                 | Washing machine          | 025              | 1wj100649v0t                |
@@ -94,8 +96,10 @@
 | WD5I1045BWQ              | Washing machine          | 025              | 1wj105552v0w                |
 | WF5S1245BB               | Washing machine          | 025              | 1wj120238v0b                |
 | WDSE1214-EVAJMW          | Washing machine          | 025              | 1wj120261v0w                |
+|                          | Washing machine          | 025              | 1wj120274v0w                |
 | WFSE1214-MVW002          | Washing machine          | 025              | 1wj120389v0b                |
 |                          | Washing machine          | 025              | 1wj120407v0w                |
+| WF3S1243BB3              | Washing machine          | 025              | 1wj120459v0f                |
 |                          | Washing machine          | 025              | 1wj120514v0t                |
 | WF5i1214-RVW002          | Washing machine          | 025              | 1wj120560v0w                |
 |                          | Refrigerator             | 026              | 1b0330z0079j                |

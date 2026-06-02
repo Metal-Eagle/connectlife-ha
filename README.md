@@ -20,6 +20,7 @@ Download the `connectlife` directory and place in your `<config>/custom_componen
 After installing, you need to restart Home Assistant.
 
 Finally, add "ConnectLife" as an integration in the UI, and provide the username and password for your ConnectLife account.
+Users in Russia/CIS who sign in with the ConnectLife.TRIR app should enable the experimental "TRIR" option in the setup dialog.
 
 Your device and all their status values should show up.
 
@@ -63,6 +64,31 @@ Some devices will beep on every configuration change. To disable this, go to the
 [ConnectLife integration](https://my.home-assistant.io/redirect/integration/?domain=connectlife)
 and click "Configure" → "Configure a device" and select the device you want to disable beeping for. 
 
+## Expose offline state
+
+By default, when a device goes offline all of its entities become unavailable in Home Assistant. If you would
+rather keep the entities showing their last known values, go to the
+[ConnectLife integration](https://my.home-assistant.io/redirect/integration/?domain=connectlife)
+and click "Configure" → "Configure a device", select the device, and enable "Expose offline state".
+
+This adds a `connectivity` binary sensor (a diagnostic entity) reporting whether the device is online, and stops
+the device's other entities from going unavailable while it is offline — they keep their last reported values
+until the device comes back online.
+
+## Daily energy and water consumption sensors
+
+For supported device types, the integration exposes a **daily energy** sensor (kWh) and, for
+wet appliances such as dishwashers and washing machines, a **daily water consumption** sensor (L).
+Air conditioners report energy via the cloud `air_duct_energy` endpoint; other appliances
+(dishwashers, washing machines, dryers, ovens, …) report energy — and where applicable water —
+via the `energyConsumptionCurve` endpoint.
+
+No configuration is needed: these sensors are created automatically for device types whose mapping
+opts in (see the `statistics` block in the
+[data dictionary docs](custom_components/connectlife/data_dictionaries/README.md#statistics)).
+The statistics are fetched from a separate cloud endpoint, polled every 10 minutes, and — unlike
+the regular status entities — they stay available even while the appliance is offline.
+
 ## Service to set property values on sensors
 
 Entity service `connectlife.set_value` can be used to set values. Use with caution, as there is **no** validation
@@ -105,8 +131,10 @@ Missing features:
 
 ### Login
 
-Note that users at least in Russia and China can't log in using this integration. See discussion in
-https://github.com/bilan/connectlife-api-connector/issues/25
+Note that users in China can't log in using this integration. Users in Russia/CIS who use the
+ConnectLife.TRIR app can log in by enabling the experimental "TRIR" option when setting up the
+integration (see https://github.com/oyvindwe/connectlife-ha/issues/267). See also the earlier
+discussion in https://github.com/bilan/connectlife-api-connector/issues/25
 
 You have to create a ConnectLife account with username/password. Login with SSO using 3rd party identity providers
 (Google, Apple, etc.) is not supported (See https://github.com/oyvindwe/connectlife-ha/issues/99).
