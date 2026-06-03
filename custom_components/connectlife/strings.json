@@ -1893,7 +1893,16 @@
             }
           },
           "swing_mode": {
-            "state": {}
+            "state": {
+              "auto": "Auto",
+              "bottom": "Bottom",
+              "high": "High",
+              "low": "Low",
+              "mid_high": "Mid-High",
+              "mid_low": "Mid-Low",
+              "swing": "Swing",
+              "top": "Top"
+            }
           }
         }
       }
@@ -2740,19 +2749,6 @@
           "for_young": "For young",
           "general": "General",
           "off": "Off"
-        }
-      },
-      "t_swing_angle": {
-        "name": "Swing angle",
-        "state": {
-          "angle_1": "Angle 1",
-          "angle_2": "Angle 2",
-          "angle_3": "Angle 3",
-          "angle_4": "Angle 4",
-          "angle_5": "Angle 5",
-          "angle_6": "Angle 6",
-          "auto": "Auto",
-          "swing": "Swing"
         }
       },
       "t_swing_follow": {
@@ -8749,6 +8745,9 @@
       },
       "t_tms": {
         "name": "AI"
+      },
+      "t_up_down": {
+        "name": "Vertical swing"
       },
       "tab_setting_status": {
         "name": "Detergent TAB"
