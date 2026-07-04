@@ -62,7 +62,7 @@
 |                          | Air conditioner          | 009              | 128                         |
 |                          | Air conditioner          | 009              | 129                         |
 |                          | Air conditioner          | 009              | 199                         |
-|                          | Air conditioner          | 009              | 19901                       |
+| HACZ01+HAAZ01            | Air conditioner          | 009              | 19901                       |
 | HI21472SV                | Induction hob            | 010              | hob-pind                    |
 |                          | Hood                     | 012              | 000                         |
 |                          | Hood                     | 012              | hood-aa-lightfeedback       |
@@ -108,12 +108,14 @@
 | RQ5P470SEIE              | Refrigerator             | 026              | 1b0470z0026j                |
 | RF793N4SAFE              | Refrigerator             | 026              | 1b0610z0043j                |
 |                          | Refrigerator             | 026              | 1b0610z0049j                |
-|                          | Refrigerator             | 026              | 1b0628z0075j                |
+| RS818N4TFE               | Refrigerator             | 026              | 1b0628z0049j                |
+| RS819N4ISU               | Refrigerator             | 026              | 1b0628z0075j                |
 | RS818N4TIE1              | Refrigerator             | 026              | 1b0628z0146j                |
 | Hisense BCD-668WP1BWF1R1 | Refrigerator             | 026              | 1b0668z0100j                |
 | Gorenje W-WaveEn-22      | Washing machine          | 027              | 000                         |
 | WPAM14A2T                | Washing machine          | 027              | washing-machine-wm22-b2plus |
 | WPNA84A2TSWIFI           | Washing machine          | 027              | washing-machine-wm22        |
+| Gorenje WNA94ARWIFI      | Washing machine          | 027              | washing-machine-wm22        |
 | DH3S80-DVW006            | Tumble dryer             | 030              | 1wk080140v0w                |
 | DH3S802BW3               | Tumble dryer             | 030              | 1wk080066v0w                |
 | DH3S902BW3               | Tumble dryer             | 030              | 1wk090106v0w                |
@@ -122,3 +124,4 @@
 | DH5S102BB                | Tumble dryer             | 030              | 1wk100266v0f                |
 | DHSE80-BEW001            | Tumble dryer             | 030              | 1wk080027e0w                |
 | DPNA83W                  | Tumble dryer             | 032              | 000                         |
+| Hisense RW3N122GSLF      | Wine cooler              | 034              | 1j0122z0035j                |

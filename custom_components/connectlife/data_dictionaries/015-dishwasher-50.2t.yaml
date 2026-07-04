@@ -1,4 +1,6 @@
-# Pelgrim GVWC330L
+# Pelgrim GVWC330L; also reported by Hisense HV673B66
+#
+# stop/start buttons are inherited from the default 015 mapping.
 properties:
   - property: Selected_program_id_status
     select:

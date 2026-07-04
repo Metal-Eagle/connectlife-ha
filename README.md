@@ -49,6 +49,7 @@ Default mapping files are provided for the following device types:
 | Washing machine          | [027](custom_components/connectlife/data_dictionaries/027.yaml) |
 | Tumble dryer             | [030](custom_components/connectlife/data_dictionaries/030.yaml) |
 | Tumble dryer             | [032](custom_components/connectlife/data_dictionaries/032.yaml) |
+| Wine cooler              | [034](custom_components/connectlife/data_dictionaries/034.yaml) |
 
 Any devices of these types will use the default mapping file, but it may not be fully functional until a
 feature-specific mapping file is provided.
@@ -74,6 +75,19 @@ and click "Configure" → "Configure a device", select the device, and enable "E
 This adds a `connectivity` binary sensor (a diagnostic entity) reporting whether the device is online, and stops
 the device's other entities from going unavailable while it is offline — they keep their last reported values
 until the device comes back online.
+
+## Swing mode control
+
+Some devices report more than one property that can drive the climate card's swing mode (for example, both a
+multi-position swing angle and a simple on/off swing). The integration normally picks one automatically, but a
+few devices advertise a control they don't actually honour — e.g. the swing angle options appear but only make
+the unit beep, while the on/off swing is what works.
+
+If the swing control on the climate card doesn't work, go to the
+[ConnectLife integration](https://my.home-assistant.io/redirect/integration/?domain=connectlife)
+and click "Configure" → "Configure a device", select the device, and set "Swing mode control" to the property
+your hardware actually responds to (leave it on "auto" to keep the automatic choice). This option only appears
+for devices that expose more than one swing property.
 
 ## Daily energy and water consumption sensors
 
@@ -114,11 +128,6 @@ The integration polls the ConnectLife API every 60 seconds to avoid overloading 
 ## Issues
 
 ### Climate entities
-
-Please ignore the following warning in the log:
-```
-Entity None (<class 'custom_components.connectlife.climate.ConnectLifeClimate'>) implements HVACMode(s): auto, off and therefore implicitly supports the turn_on/turn_off methods without setting the proper ClimateEntityFeature. Please report it to the author of the 'connectlife' custom integration
-```
 
 Missing features:
 - Setting `target_temperature_high`/`target_temperature_low`

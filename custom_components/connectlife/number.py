@@ -12,7 +12,7 @@ from .coordinator import ConnectLifeCoordinator
 from .dictionaries import Dictionaries, Dictionary, Property
 from .entity import ConnectLifeEntity
 from connectlife.appliance import ConnectLifeAppliance
-from .utils import has_platform, to_unit
+from .utils import climate_bound_properties, device_target_overrides, has_platform, to_unit
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -26,6 +26,8 @@ async def async_setup_entry(
     coordinator = hass.data[DOMAIN][config_entry.entry_id]
     for appliance in coordinator.data.values():
         dictionary = Dictionaries.get_dictionary(appliance)
+        overrides = device_target_overrides(config_entry, appliance.device_id)
+        climate_bound = climate_bound_properties(appliance, dictionary, overrides)
         async_add_entities(
             ConnectLifeNumberEntity(
                 coordinator,
@@ -36,6 +38,7 @@ async def async_setup_entry(
             )
             for s in appliance.status_list
             if has_platform(Platform.NUMBER, dictionary.properties[s])
+            and s not in climate_bound
         )
 
 
@@ -73,7 +76,7 @@ class ConnectLifeNumberEntity(ConnectLifeEntity, NumberEntity):
             native_unit_of_measurement=to_unit(
                 dd_entry.number.unit, appliance=appliance, dictionary=dictionary
             ),
-            translation_key=self.to_translation_key(status),
+            translation_key=self.to_translation_key(dd_entry.translation_key or status),
             entity_category=dd_entry.entity_category,
         )
         self._refresh_state()
